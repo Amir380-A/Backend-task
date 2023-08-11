@@ -5,9 +5,7 @@ const Navbar = ({ token, handleLogout }) => {
   return (
     <nav className="navbar">
       <ul>
-        <li>
-          <Link to="/patients">Patients</Link>
-        </li>
+     
         {token ? (
           <>
             <li>
