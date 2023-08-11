@@ -1,0 +1,121 @@
+/* Reset some default styles */
+body,
+h1,
+h2,
+h3,
+p,
+ul,
+li,
+button {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+/* App container */
+.App {
+  text-align: center;
+}
+
+/* Common styles */
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.error {
+  color: red;
+  margin-bottom: 10px;
+}
+
+/* Login and Register forms */
+.login-container,
+.register-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+.login-container h2,
+.register-container h2 {
+  margin-bottom: 20px;
+}
+
+.login-container input,
+.register-container input,
+.login-container button,
+.register-container button {
+  margin: 5px 0;
+  padding: 10px;
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.login-container button,
+.register-container button {
+  background-color: #007bff;
+  color: #fff;
+  cursor: pointer;
+}
+
+.login-container button:hover,
+.register-container button:hover {
+  background-color: #0056b3;
+}
+
+/* Dashboard */
+.dashboard-container {
+  padding: 20px;
+}
+
+.dashboard-container h2 {
+  margin-bottom: 20px;
+}
+
+.dashboard-container button {
+  background-color: #dc3545;
+  color: #fff;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+
+.dashboard-container button:hover {
+  background-color: #c82333;
+}
+
+/* Patient Profile */
+.patient-profile-container {
+  padding: 20px;
+}
+
+.patient-profile-container h2 {
+  margin-bottom: 20px;
+}
+
+/* Navigation */
+nav {
+  padding: 10px;
+  background-color: #f4f4f4;
+}
+
+nav button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+/* Patient list */
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+ul li {
+  margin-bottom: 5px;
+}
