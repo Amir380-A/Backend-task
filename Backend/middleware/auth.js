@@ -21,7 +21,7 @@ const requireAuth = async (req, res, next) => {
     if (!user) {
       return res.status(401).json({ message: 'Unauthorized' });
     }
-
+  
     req.user = user; // Attach the user object to req
     next();
   } catch (error) {
@@ -33,6 +33,8 @@ const requireAuth = async (req, res, next) => {
 const requireRole = (role) => {
   return (req, res, next) => {
     if (req.user && req.user.role === role) {
+      console.log('User Role:', req.user.role);
+      console.log('Required Role:', role);
       next();
     } else {
       res.status(403).json({ message: 'Forbidden' });

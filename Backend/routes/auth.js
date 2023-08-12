@@ -9,7 +9,7 @@ const router = express.Router();
 
 router.post('/login', async (req, res) => {
   try {
-    const { username, password } = req.body;
+    const { username, password  } = req.body;
 
     const user = await User.findOne({ username });
     if (!user) {
@@ -32,7 +32,7 @@ router.post('/login', async (req, res) => {
 
 router.post('/register', async (req, res) => {
   try {
-    const { username, email, password } = req.body;
+    const { username, email, password, role } = req.body;
 
     // Check if user already exists
     const existingUser = await User.findOne({ username });
