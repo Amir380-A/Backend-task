@@ -29,14 +29,7 @@ jobs:
     - name: Validate Build
       run: echo "Build completed successfully"
 
-    - name: Upload Artifacts
-      uses: actions/upload-artifact@v2
-      with:
-        name: build-artifacts
-        path: |
-          ./medical-frontend
-          ./Backend
-
+   
 
 
 
