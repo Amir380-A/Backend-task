@@ -1,7 +1,7 @@
 const express = require('express');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-const User = require('../models/Users'); // Make sure the path to your User model is correct
+const User = require('../models/Users'); 
 const dotenv = require('dotenv');
 dotenv.config();
 const router = express.Router();
@@ -41,7 +41,7 @@ router.post('/register', async (req, res) => {
     }
 
     // Hash the password
-    const hashedPassword = await bcrypt.hash(password, 10); // Use a higher value for bcrypt's salt rounds
+    const hashedPassword = await bcrypt.hash(password, 10); 
 
     // Create a new user
     const newUser = await User.create({ username, email, password: hashedPassword });

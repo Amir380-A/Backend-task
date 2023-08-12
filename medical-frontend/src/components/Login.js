@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import api from '../api'; // Your API utility functions
-
+import api from '../api'; 
 const Login = ({ onLogin }) => {
   const history = useNavigate();
   const [username, setUsername] = useState('');

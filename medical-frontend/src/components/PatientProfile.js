@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import api from '../api'; // Your API utility functions
+import api from '../api'; 
 
-const PatientProfile = ({ token }) => { // Fix component name here
+const PatientProfile = ({ token }) => {
   const history = useNavigate();
   const [patients, setPatients] = useState([]);
 
@@ -10,7 +10,7 @@ const PatientProfile = ({ token }) => { // Fix component name here
     // Fetch all patients using the token
     const fetchPatients = async () => {
       try {
-        const response = await api.getPatients(); // Use the correct API function
+        const response = await api.getPatients(); 
         if (response.data && Array.isArray(response.data)) {
           setPatients(response.data);
         } else {
@@ -49,4 +49,4 @@ const PatientProfile = ({ token }) => { // Fix component name here
   );
 };
 
-export default PatientProfile; // Correctly exporting the component
+export default PatientProfile;
