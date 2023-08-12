@@ -1,23 +1,28 @@
 // middleware/auth.js
 const jwt = require('jsonwebtoken');
+const User = require('../models/Users'); // Update the path to your User model
 const dotenv = require('dotenv');
 dotenv.config();
 
-const requireAuth = (req, res, next) => {
-  const token = req.headers.authorization;
+const requireAuth = async (req, res, next) => {
+  const authorizationHeader = req.headers.authorization;
 
-  if (!token) {
+  if (!authorizationHeader) {
     return res.status(401).json({ message: 'Unauthorized' });
   }
 
+  const token = authorizationHeader.split(' ')[1];
+
   try {
     const decodedToken = jwt.verify(token, process.env.SECRET_KEY);
-   
-    //console.log('Using secret key:', secretKey);
-   // console.log('Using secret key:', token);
-  
-  
-    req.userId = decodedToken.userId;
+
+    const user = await User.findById(decodedToken.userId); // Fetch the user object
+
+    if (!user) {
+      return res.status(401).json({ message: 'Unauthorized' });
+    }
+
+    req.user = user; // Attach the user object to req
     next();
   } catch (error) {
     console.error('Token verification error:', error);
@@ -25,8 +30,14 @@ const requireAuth = (req, res, next) => {
   }
 };
 
-module.exports = { requireAuth }; // Export as a named export
+const requireRole = (role) => {
+  return (req, res, next) => {
+    if (req.user && req.user.role === role) {
+      next();
+    } else {
+      res.status(403).json({ message: 'Forbidden' });
+    }
+  };
+};
 
-
-//userId: user._id
-
+module.exports = { requireAuth, requireRole };

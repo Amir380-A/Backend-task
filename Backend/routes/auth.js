@@ -6,6 +6,7 @@ const dotenv = require('dotenv');
 dotenv.config();
 const router = express.Router();
 
+
 router.post('/login', async (req, res) => {
   try {
     const { username, password } = req.body;
@@ -20,7 +21,7 @@ router.post('/login', async (req, res) => {
       return res.status(401).json({ message: 'Invalid password' });
     }
 
-    const token = jwt.sign({ userId: user._id }, process.env.SECRET_KEY, { expiresIn: '1h' });
+    const token = jwt.sign({ userId: user._id, role: user.role }, process.env.SECRET_KEY, { expiresIn: '1h' });
 
     res.json({ token });
   } catch (error) {
@@ -38,17 +39,15 @@ router.post('/register', async (req, res) => {
     if (existingUser) {
       return res.status(400).json({ message: 'User already exists' });
     }
-    console.log('Password before hashing:', password);
-    console.log('Password before hashing:', email);
-    console.log(req.body)
+
     // Hash the password
     const hashedPassword = await bcrypt.hash(password, 10); // Use a higher value for bcrypt's salt rounds
 
     // Create a new user
     const newUser = await User.create({ username, email, password: hashedPassword });
-      console.log(newUser);
+
     // Generate a token
-    const token = jwt.sign({ userId: newUser._id }, process.env.SECRET_KEY, { expiresIn: '1h' });
+    const token = jwt.sign({ userId: newUser._id, role: newUser.role }, process.env.SECRET_KEY, { expiresIn: '1h' });
 
     res.status(201).json({ user: newUser, token });
   } catch (error) {
