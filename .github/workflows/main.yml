@@ -1,0 +1,49 @@
+name: Full Stack CI
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '14'
+
+    - name: Build and Test Frontend
+      working-directory: ./medical-frontend
+      run: npm install
+      
+
+    - name: Build Backend
+      working-directory: ./Backend
+      run: npm install
+        
+    - name: Set up Docker
+      uses: docker/setup-docker@v2
+      with:
+        docker-host: tcp://localhost:2375
+
+    - name: Build and Test Docker Images
+      run: docker-compose up -d --build
+
+
+
+
+
+
+
+
+
+
+
+
+
