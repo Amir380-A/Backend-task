@@ -50,6 +50,8 @@ Run the development server:
 npm start
 ```
 
+Or you can use docker and build the two dockerfiles for the backend and the frontend
+
 The frontend is configured to run in port 3000 and the backend on 5000. but you can change it as you want.
 Technologies Used:
 - ReactJS
