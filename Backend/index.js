@@ -1,7 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
-const request = require('supertest');
 const cors = require('cors'); // Import the CORS middleware
 const authRoutes = require('./routes/auth');
 const patientRoutes = require('./routes/patients');
