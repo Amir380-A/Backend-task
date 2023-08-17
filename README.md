@@ -60,5 +60,7 @@ Technologies Used:
 - Mongoose
 - NodeMailer
 - JWT
+- Docker
+- GitHub Action
 
 
