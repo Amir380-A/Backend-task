@@ -1,26 +1,27 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import api from '../api'; 
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import api from "../api";
 const Login = ({ onLogin }) => {
   const history = useNavigate();
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
 
   const handleLogin = async () => {
     try {
       const response = await api.login(username, password);
-      console.log('Login response:', response);
+      console.log("Login response:", response);
 
-      if (response.token) { // Access the 'token' directly from the response
+      if (response.token) {
+        // Access the 'token' directly from the response
         const { token } = response;
         onLogin(token);
-        history.replace('/patients'); // Redirect to patients' list
+        history.replace("/patients"); // Redirect to patients' list
       } else {
-        setError('Invalid credentials. Please try again.');
+        setError("Invalid credentials. Please try again.");
       }
     } catch (error) {
-      setError('Invalid credentials. Please try again.');
+      setError("Invalid credentials. Please try again.");
     }
   };
 

@@ -1,14 +1,14 @@
-version: '3'
+version: "3"
 services:
   backend:
     image: amir14631/backend
     ports:
-      - '5000:5000'
+      - "5000:5000"
     env_file:
       - .env
   frontend:
     image: amir14631/frontend
     ports:
-      - '3000:3000'
+      - "3000:3000"
     depends_on:
       - backend

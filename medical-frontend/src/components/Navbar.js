@@ -1,11 +1,10 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { Link } from "react-router-dom";
 
 const Navbar = ({ token, handleLogout }) => {
   return (
     <nav className="navbar">
       <ul>
-     
         {token ? (
           <>
             <li>
@@ -21,11 +20,11 @@ const Navbar = ({ token, handleLogout }) => {
               <Link to="/register">Register</Link>
             </li>
             <li>
-          <Link to="/patient">Patient</Link>
-        </li>
-        <li>
-          <Link to="/patients">Patients</Link>
-        </li>
+              <Link to="/patient">Patient</Link>
+            </li>
+            <li>
+              <Link to="/patients">Patients</Link>
+            </li>
           </>
         )}
       </ul>

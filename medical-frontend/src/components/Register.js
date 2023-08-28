@@ -1,27 +1,28 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import api from '../api'; 
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import api from "../api";
 
 const Register = ({ onLogin }) => {
   const navigate = useNavigate();
-  const [username, setUsername] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   const handleRegister = async () => {
     try {
       const response = await api.register(username, email, password);
-      console.log('Registration response:', response);
+      console.log("Registration response:", response);
 
-      if (response.token) { // Access the 'token' directly from the response
+      if (response.token) {
+        // Access the 'token' directly from the response
         const { token } = response;
         onLogin(token);
-        navigate('/dashboard');
+        navigate("/dashboard");
       } else {
-        console.error('Registration failed. No token found in response.');
+        console.error("Registration failed. No token found in response.");
       }
     } catch (error) {
-      console.error('Registration error:', error);
+      console.error("Registration error:", error);
     }
   };
 

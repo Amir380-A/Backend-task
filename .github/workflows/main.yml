@@ -10,35 +10,21 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v2
+      - name: Checkout repository
+        uses: actions/checkout@v2
 
-    - name: Set up Node.js
-      uses: actions/setup-node@v2
-      with:
-        node-version: '14'
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: "14"
 
-    - name: Build Frontend
-      working-directory: ./medical-frontend
-      run: npm install
+      - name: Build Frontend
+        working-directory: ./medical-frontend
+        run: npm install
 
-    - name: Build Backend
-      working-directory: ./Backend
-      run: npm install
+      - name: Build Backend
+        working-directory: ./Backend
+        run: npm install
 
-    - name: Validate Build
-      run: echo "Build completed successfully"
-
-   
-
-
-
-
-
-
-
-
-
-
-
-
+      - name: Validate Build
+        run: echo "Build completed successfully"

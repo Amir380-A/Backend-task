@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import api from '../api'; 
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import api from "../api";
 
 const PatientProfile = ({ token }) => {
   const history = useNavigate();
@@ -10,14 +10,14 @@ const PatientProfile = ({ token }) => {
     // Fetch all patients using the token
     const fetchPatients = async () => {
       try {
-        const response = await api.getPatients(); 
+        const response = await api.getPatients();
         if (response.data && Array.isArray(response.data)) {
           setPatients(response.data);
         } else {
-          console.error('Invalid response data for patients.');
+          console.error("Invalid response data for patients.");
         }
       } catch (error) {
-        console.error('Fetching patients error:', error);
+        console.error("Fetching patients error:", error);
       }
     };
 
@@ -28,9 +28,9 @@ const PatientProfile = ({ token }) => {
     try {
       // Clear token and navigate to login
       await api.logout();
-      history('/login'); // Use 'history' function to navigate
+      history("/login"); // Use 'history' function to navigate
     } catch (error) {
-      console.error('Logout error:', error);
+      console.error("Logout error:", error);
     }
   };
 
