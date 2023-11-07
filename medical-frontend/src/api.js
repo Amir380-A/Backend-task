@@ -6,6 +6,8 @@ const api = axios.create({
   baseURL,
 });
 
+
+
 // Interceptor to add the authorization header to requests
 api.interceptors.request.use(
   (config) => {
